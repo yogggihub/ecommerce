@@ -3,14 +3,16 @@ import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
 } from "../../utils/firebase/firebase.utils";
-import FormInput from "../../components/form-input/form-input-component";
+import FormInput from "../form-input/form-input-component";
+import Button from "../button/button-component";
+import "../../sign-in/sign-up-style.scss";
 const defaultFormFields = {
   displayName: "",
   email: "",
   password: "",
   confirmPassword: "",
 };
-const SingUpForm = () => {
+const Authentication = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
   const onChangeHandler = (event) => {
@@ -43,8 +45,9 @@ const SingUpForm = () => {
     }
   };
   return (
-    <div>
-      <h1>SingUp with your Email and Password</h1>
+    <div className="sign-up-container">
+      <h2>Don't have an Account</h2>
+      <span>SingUp with your Email and Password</span>
       <form onSubmit={handleSubmit}>
         <FormInput
           label="Display Name"
@@ -78,9 +81,11 @@ const SingUpForm = () => {
           name="confirmPassword"
           onChange={onChangeHandler}
         />
-        <button type="submit">Sign Up</button>
+        <Button type="submit">
+          Sign Up
+        </Button>
       </form>
     </div>
   );
 };
-export default SingUpForm;
+export default Authentication;
